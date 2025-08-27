@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import TasksPage from "@/Pages/Task";
+import TasksPage from "@/app/Task";
 
 export default function Home() {
   return (
