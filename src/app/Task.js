@@ -4,9 +4,10 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, ListTodo, CheckCircle, Clock } from "lucide-react";
 import { Button } from "../components/ui/button";
-import TaskCard from "../components/tasks/TaskCard";
-import TaskForm from "../components/tasks/TaskForm";
+
 import styles from "./TasksPage.module.css";
+import TaskCard from "@/Components/tasks/TaskCard";
+import TaskForm from "@/Components/tasks/TaskForm";
 
 const STORAGE_KEY = "taskManagement_tasks";
 
