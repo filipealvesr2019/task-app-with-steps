@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Plus, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/Components/UI/Button";
 import styles from "./TaskForm.module.css";
 
 export default function TaskForm({ onAddTask, onCancel }) {

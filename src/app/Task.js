@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, ListTodo, CheckCircle, Clock } from "lucide-react";
-import { Button } from "../components/ui/button";
+import { Button } from "../Components/UI/Button";
 
 import styles from "./TasksPage.module.css";
 import TaskCard from "@/Components/tasks/TaskCard";
