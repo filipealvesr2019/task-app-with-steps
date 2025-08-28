@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Plus, X } from "lucide-react";
-import { Button } from "@/Components/UI/Button";
+
 import styles from "./TaskForm.module.css";
+import { Button } from "../UI/Button";
 
 export default function TaskForm({ onAddTask, onCancel }) {
   const [taskName, setTaskName] = useState("");
