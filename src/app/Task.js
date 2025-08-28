@@ -7,7 +7,6 @@ import { Plus, ListTodo, CheckCircle, Clock } from "lucide-react";
 import styles from "./TasksPage.module.css";
 import TaskCard from "@/Components/tasks/TaskCard";
 import TaskForm from "@/Components/tasks/TaskForm";
-import Button from "../Components/UI/Button";
 
 const STORAGE_KEY = "taskManagement_tasks";
 
@@ -135,24 +134,24 @@ export default function TasksPage() {
           <div className={styles.controls}>
             <div className={styles.filterGroup}>
               {["all", "active", "completed"].map((filterType) => (
-                <Button
+                <button
                   key={filterType}
                   variant={filter === filterType ? "default" : "outline"}
                   onClick={() => setFilter(filterType)}
                   className={`${styles.filterBtn} ${filter === filterType ? styles.filterActive : ""}`}
                 >
                   {filterType === "all" ? "All Tasks" : `${filterType} Tasks`}
-                </Button>
+                </button>
               ))}
             </div>
 
-            <Button
+            <button
               onClick={() => setShowTaskForm(true)}
               className={styles.createBtn}
             >
               <Plus className={styles.iconSmall + " " + styles.iconWithMargin} />
               Create Task
-            </Button>
+            </button>
           </div>
         </motion.div>
 
@@ -177,13 +176,13 @@ export default function TasksPage() {
                   }
                 </p>
                 {filter === "all" && (
-                  <Button
+                  <button
                     onClick={() => setShowTaskForm(true)}
                     className={styles.createBtnAlt}
                   >
                     <Plus className={styles.iconSmall + " " + styles.iconWithMargin} />
                     Create Your First Task
-                  </Button>
+                  </button>
                 )}
               </motion.div>
             ) : (

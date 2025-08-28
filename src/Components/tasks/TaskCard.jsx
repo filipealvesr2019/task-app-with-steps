@@ -6,7 +6,6 @@ import { Plus, Trash2, ChevronDown, ChevronUp } from "lucide-react";
 import EditableText from "./EditableText";
 import StepItem from "./StepItem";
 import styles from "./TaskCard.module.css";
-import Button from "../UI/Button";
 
 
 export default function TaskCard({ task, onUpdateTask, onDeleteTask }) {
@@ -88,7 +87,7 @@ export default function TaskCard({ task, onUpdateTask, onDeleteTask }) {
         </div>
 
         <div className={styles.headerRight}>
-          <Button
+          <button
             variant="ghost"
             size="icon"
             onClick={() => setIsExpanded(!isExpanded)}
@@ -99,15 +98,15 @@ export default function TaskCard({ task, onUpdateTask, onDeleteTask }) {
             ) : (
               <ChevronDown className={styles.iconSmall} />
             )}
-          </Button>
-          <Button
+          </button>
+          <button
             variant="ghost"
             size="icon"
             onClick={() => onDeleteTask(task.id)}
             className={styles.deleteBtn}
           >
             <Trash2 className={styles.iconSmall} />
-          </Button>
+          </button>
         </div>
       </div>
 
@@ -145,13 +144,13 @@ export default function TaskCard({ task, onUpdateTask, onDeleteTask }) {
                   placeholder="Add a new step..."
                   className={styles.addStepInput}
                 />
-                <Button
+                <button
                   onClick={addStep}
                   disabled={!newStepText.trim()}
                   className={styles.addStepBtn}
                 >
                   <Plus className={styles.iconSmall} />
-                </Button>
+                </button>
               </div>
             </div>
           </motion.div>

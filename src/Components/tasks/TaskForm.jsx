@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Plus, X } from "lucide-react";
 
 import styles from "./TaskForm.module.css";
-import Button from "../UI/Button";
+
 
 export default function TaskForm({ onAddTask, onCancel }) {
   const [taskName, setTaskName] = useState("");
@@ -54,14 +54,14 @@ export default function TaskForm({ onAddTask, onCancel }) {
       >
         <div className={styles.modalHeader}>
           <div className={styles.modalTitle}>Create New Task</div>
-          <Button
+          <button
             variant="ghost"
             size="icon"
             onClick={onCancel}
             className={styles.closeBtn}
           >
             <X className={styles.iconSmall} />
-          </Button>
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -80,7 +80,7 @@ export default function TaskForm({ onAddTask, onCancel }) {
           <div className={styles.formGroup}>
             <div className={styles.stepsHeader}>
               <label className={styles.label}>Steps (optional)</label>
-              <Button
+              <button
                 type="button"
                 variant="outline"
                 size="sm"
@@ -89,7 +89,7 @@ export default function TaskForm({ onAddTask, onCancel }) {
               >
                 <Plus className={styles.iconSmall} />
                 Add Step
-              </Button>
+              </button>
             </div>
 
             <div className={styles.stepsList}>
@@ -108,7 +108,7 @@ export default function TaskForm({ onAddTask, onCancel }) {
                     className={styles.input}
                   />
                   {steps.length > 1 && (
-                    <Button
+                    <button
                       type="button"
                       variant="ghost"
                       size="icon"
@@ -116,7 +116,7 @@ export default function TaskForm({ onAddTask, onCancel }) {
                       className={styles.removeBtn}
                     >
                       <X className={styles.iconSmall} />
-                    </Button>
+                    </button>
                   )}
                 </motion.div>
               ))}
@@ -124,21 +124,21 @@ export default function TaskForm({ onAddTask, onCancel }) {
           </div>
 
           <div className={styles.formActions}>
-            <Button
+            <button
               type="button"
               variant="outline"
               onClick={onCancel}
               className={styles.cancelBtn}
             >
               Cancel
-            </Button>
-            <Button
+            </button>
+            <button
               type="submit"
               className={styles.createBtn}
               disabled={!taskName.trim()}
             >
               Create Task
-            </Button>
+            </button>
           </div>
         </form>
       </motion.div>
