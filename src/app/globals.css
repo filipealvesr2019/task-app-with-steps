@@ -1,5 +1,7 @@
 /* src/app/TasksPage.module.css */
 /* Color variables (kept close to Tailwind slate/blue/green/amber/purple) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 :root{
   --slate-100: #f1f5f9;
   --slate-200: #e2e8f0;
@@ -21,8 +23,11 @@
   --purple-600: #7c3aed;
   --card-border: #e6e9ee;
   --shadow: 0 6px 18px rgba(16,24,40,0.06);
+  font-family: var(--font-geist-sans), sans-serif;
 }
-
+.mono {
+  font-family: var(--font-geist-mono), monospace;
+}
 *{
     box-sizing: border-box;
     margin: 0;
