@@ -6,7 +6,7 @@ import { Plus, Trash2, ChevronDown, ChevronUp } from "lucide-react";
 import EditableText from "./EditableText";
 import StepItem from "./StepItem";
 import styles from "./TaskCard.module.css";
-import { Button } from "../UI/Button";
+import Button from "../UI/Button";
 
 
 export default function TaskCard({ task, onUpdateTask, onDeleteTask }) {

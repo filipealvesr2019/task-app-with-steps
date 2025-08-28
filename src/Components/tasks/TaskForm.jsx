@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Plus, X } from "lucide-react";
 
 import styles from "./TaskForm.module.css";
-import { Button } from "../UI/Button";
+import Button from "../UI/Button";
 
 export default function TaskForm({ onAddTask, onCancel }) {
   const [taskName, setTaskName] = useState("");
