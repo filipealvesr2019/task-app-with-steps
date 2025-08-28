@@ -7,7 +7,7 @@ import { Plus, ListTodo, CheckCircle, Clock } from "lucide-react";
 import styles from "./TasksPage.module.css";
 import TaskCard from "@/Components/tasks/TaskCard";
 import TaskForm from "@/Components/tasks/TaskForm";
-import { Button } from "@/Components/UI/Button";
+import { Button } from "../Components/UI/Button";
 
 const STORAGE_KEY = "taskManagement_tasks";
 
