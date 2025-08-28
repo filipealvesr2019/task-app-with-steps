@@ -1,39 +1,3 @@
-/* src/app/TasksPage.module.css */
-/* Color variables (kept close to Tailwind slate/blue/green/amber/purple) */
-:root{
-  --slate-100: #f1f5f9;
-  --slate-200: #e2e8f0;
-  --slate-500: #64748b;
-  --slate-600: #475569;
-  --slate-700: #334155;
-  --slate-800: #1f2937;
-  --white: #ffffff;
-  --blue-100: #dbeafe;
-  --blue-600: #2563eb;
-  --green-100: #dcfce7;
-  --green-600: #16a34a;
-  --green-50: #ecfdf5;
-  --green-200: #bbf7d0;
-  --green-400: #34d399;
-  --amber-100: #fffbeb;
-  --amber-600: #d97706;
-  --purple-100: #f3e8ff;
-  --purple-600: #7c3aed;
-  --card-border: #e6e9ee;
-  --shadow: 0 6px 18px rgba(16,24,40,0.06);
-}
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-      padding: 0;
-}
-
-.body{
-      background: linear-gradient(135deg, var(--slate-100), var(--slate-200));
-      margin: 0;
-      padding: 0;
-}
 
 /* Page / layout */
 .page{

@@ -1,6 +1,8 @@
+// src/components/tasks/EditableText.jsx
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Pencil } from "lucide-react";
+import styles from "./EditableText.module.css";
 
 export default function EditableText({ 
   value, 
@@ -13,6 +15,10 @@ export default function EditableText({
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(value);
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    setEditValue(value);
+  }, [value]);
 
   useEffect(() => {
     if (isEditing && inputRef.current) {
@@ -43,7 +49,7 @@ export default function EditableText({
         ref={inputRef}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={`bg-white border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200 transition-colors ${inputClassName}`}
+        className={`${styles.input} ${inputClassName}`}
         value={editValue}
         onChange={(e) => setEditValue(e.target.value)}
         onBlur={handleSave}
@@ -55,12 +61,12 @@ export default function EditableText({
 
   return (
     <div 
-      className={`group flex items-center gap-2 cursor-pointer ${className}`}
+      className={`${styles.viewWrapper} ${className}`}
       onClick={() => setIsEditing(true)}
     >
-      <span className="flex-1">{value}</span>
+      <span className={styles.viewValue}>{value}</span>
       {showEditIcon && (
-        <Pencil className="w-4 h-4 text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+        <Pencil className={styles.pencilIcon} />
       )}
     </div>
   );

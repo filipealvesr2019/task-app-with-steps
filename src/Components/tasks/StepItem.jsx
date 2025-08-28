@@ -1,49 +1,38 @@
+// src/components/tasks/StepItem.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { Circle, CheckCircle2 } from "lucide-react";
 import EditableText from "./EditableText";
+import styles from "./StepItem.module.css";
 
 export default function StepItem({ step, onUpdateStep, onToggleStatus }) {
   const isCompleted = step.status === "completed";
 
   return (
     <motion.div
-      
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      
-      className={`group flex items-start gap-4 p-4 rounded-lg transition-all duration-300 ${
-        isCompleted 
-          ? "bg-green-50 border border-green-200" 
-          : "bg-slate-50 hover:bg-slate-100 border border-slate-200"
-      }`}
+      className={`${styles.stepItem} ${isCompleted ? styles.completed : styles.pending}`}
     >
       <button
         onClick={() => onToggleStatus(step.id)}
-        className={`mt-0.5 p-1 rounded-full transition-colors duration-200 ${
-          isCompleted 
-            ? "text-green-600 hover:text-green-700" 
-            : "text-slate-500 hover:text-slate-600"
-        }`}
+        className={`${styles.toggleBtn} ${isCompleted ? styles.toggleDone : styles.togglePending}`}
+        aria-label="toggle step status"
       >
         {isCompleted ? (
-          <CheckCircle2 className="w-6 h-6" />
+          <CheckCircle2 className={styles.iconLarge} />
         ) : (
-          <Circle className="w-6 h-6" />
+          <Circle className={styles.iconLarge} />
         )}
       </button>
 
-      <div className="flex-1 min-w-0">
+      <div className={styles.stepContent}>
         <EditableText
           value={step.text}
           onSave={(newText) => onUpdateStep(step.id, newText)}
-          className={`text-base leading-relaxed font-medium ${
-            isCompleted 
-              ? "line-through text-green-700" 
-              : "text-slate-700"
-          }`}
-          inputClassName="w-full text-base"
+          className={isCompleted ? styles.stepTextCompleted : styles.stepText}
+          inputClassName={styles.stepInput}
           placeholder="Enter step description..."
           showEditIcon={false}
         />

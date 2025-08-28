@@ -1,0 +1,34 @@
+/* src/components/tasks/TaskForm.module.css */
+.overlay{
+  position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.42); padding:20px; z-index:50;
+}
+.modal{
+  width:100%; max-width:720px; background:#fff; border-radius:14px; overflow:hidden; border:1px solid #e6e9ee; max-height:90vh; display:flex; flex-direction:column;
+}
+.modalHeader{
+  padding:16px 20px; background:#334155; color:#fff; display:flex; align-items:center; justify-content:space-between;
+}
+.modalTitle{ font-size:1.125rem; font-weight:600; }
+.closeBtn{ color:#e6eef8; }
+
+.form{ padding:18px; overflow:auto; }
+.formGroup{ margin-bottom:16px; }
+.label{ display:block; margin-bottom:8px; font-size:0.875rem; color:#475569; font-weight:500; }
+
+.input{
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid #e2e8f0; outline:none;
+}
+.input:focus{ border-color:#64748b; box-shadow:0 0 0 4px rgba(99,102,241,0.06); }
+
+.stepsHeader{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.addStepBtn{ color:#475569; border:1px solid #e2e8f0; }
+
+.stepsList{ display:flex; flex-direction:column; gap:8px; }
+.stepRow{ display:flex; gap:8px; align-items:center; }
+
+.removeBtn{ color:#ef4444; }
+
+.formActions{ display:flex; justify-content:flex-end; gap:12px; margin-top:18px; }
+.cancelBtn{ padding:10px 14px; border-radius:10px; border:1px solid #e2e8f0; color:#475569; }
+.createBtn{ background:#334155; color:#fff; padding:10px 16px; border-radius:10px; }
+.iconSmall{ width:18px; height:18px; }

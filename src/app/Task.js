@@ -1,11 +1,12 @@
-
+// src/app/TasksPage.jsx
 "use client"
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, CheckCircle, Clock, ListTodo } from "lucide-react";
+import { Plus, ListTodo, CheckCircle, Clock } from "lucide-react";
 import { Button } from "../components/ui/button";
 import TaskCard from "../components/tasks/TaskCard";
 import TaskForm from "../components/tasks/TaskForm";
+import styles from "./TasksPage.module.css";
 
 const STORAGE_KEY = "taskManagement_tasks";
 
@@ -14,7 +15,6 @@ export default function TasksPage() {
   const [showTaskForm, setShowTaskForm] = useState(false);
   const [filter, setFilter] = useState("all");
 
-  // Load tasks from localStorage on component mount
   useEffect(() => {
     const storedTasks = localStorage.getItem(STORAGE_KEY);
     if (storedTasks) {
@@ -27,7 +27,6 @@ export default function TasksPage() {
     }
   }, []);
 
-  // Save tasks to localStorage whenever tasks change
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   }, [tasks]);
@@ -47,20 +46,15 @@ export default function TasksPage() {
     setTasks(prev => prev.filter(task => task.id !== taskId));
   };
 
-  // Filter tasks based on completion status
   const filteredTasks = tasks.filter(task => {
     if (filter === "all") return true;
-    
     const completedSteps = task.steps?.filter(step => step.status === "completed").length || 0;
     const totalSteps = task.steps?.length || 0;
-    
     if (filter === "completed") return totalSteps > 0 && completedSteps === totalSteps;
     if (filter === "active") return totalSteps === 0 || completedSteps < totalSteps;
-    
     return true;
   });
 
-  // Statistics
   const totalTasks = tasks.length;
   const completedTasks = tasks.filter(task => {
     const completedSteps = task.steps?.filter(step => step.status === "completed").length || 0;
@@ -73,87 +67,78 @@ export default function TasksPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="max-w-4xl mx-auto p-6">
-        {/* Header */}
+    <div className={styles.page}>
+      <div className={styles.container}>
         <motion.div
-          
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          
-          className="mb-8"
+          className={styles.headerWrapper}
         >
-          <div className="text-center mb-6">
-            <h1 className="text-4xl font-bold text-slate-800 mb-2">Task Manager</h1>
-            <p className="text-lg text-slate-600">Organize your work with elegant simplicity</p>
+          <div className={styles.headerCenter}>
+            <h1 className={styles.title}>Task Manager</h1>
+            <p className={styles.subtitle}>Organize your work with elegant simplicity</p>
           </div>
 
-          {/* Statistics Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-white rounded-xl p-4 shadow-md border border-slate-200">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <ListTodo className="w-5 h-5 text-blue-600" />
+          <div className={styles.statsGrid}>
+            <div className={styles.card}>
+              <div className={styles.cardInner}>
+                <div className={`${styles.iconCircle} ${styles.blue}`}>
+                  <ListTodo className={styles.iconSmall} />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-800">{totalTasks}</p>
-                  <p className="text-sm font-medium text-slate-600">Total Tasks</p>
+                  <p className={styles.cardNumber}>{totalTasks}</p>
+                  <p className={styles.cardLabel}>Total Tasks</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-4 shadow-md border border-slate-200">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+            <div className={styles.card}>
+              <div className={styles.cardInner}>
+                <div className={`${styles.iconCircle} ${styles.green}`}>
+                  <CheckCircle className={styles.iconSmall} />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-800">{completedTasks}</p>
-                  <p className="text-sm font-medium text-slate-600">Completed</p>
+                  <p className={styles.cardNumber}>{completedTasks}</p>
+                  <p className={styles.cardLabel}>Completed</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-4 shadow-md border border-slate-200">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-amber-600" />
+            <div className={styles.card}>
+              <div className={styles.cardInner}>
+                <div className={`${styles.iconCircle} ${styles.amber}`}>
+                  <Clock className={styles.iconSmall} />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-800">{totalTasks - completedTasks}</p>
-                  <p className="text-sm font-medium text-slate-600">Active</p>
+                  <p className={styles.cardNumber}>{totalTasks - completedTasks}</p>
+                  <p className={styles.cardLabel}>Active</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-4 shadow-md border border-slate-200">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                  <span className="text-sm font-bold text-purple-600">%</span>
+            <div className={styles.card}>
+              <div className={styles.cardInner}>
+                <div className={`${styles.iconCircle} ${styles.purple}`}>
+                  <span className={styles.percentSign}>%</span>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-800">
+                  <p className={styles.cardNumber}>
                     {totalSteps > 0 ? Math.round((completedSteps / totalSteps) * 100) : 0}%
                   </p>
-                  <p className="text-sm font-medium text-slate-600">Progress</p>
+                  <p className={styles.cardLabel}>Progress</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Controls */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="flex gap-2">
+          <div className={styles.controls}>
+            <div className={styles.filterGroup}>
               {["all", "active", "completed"].map((filterType) => (
                 <Button
                   key={filterType}
                   variant={filter === filterType ? "default" : "outline"}
                   onClick={() => setFilter(filterType)}
-                  className={`capitalize font-medium ${
-                    filter === filterType 
-                      ? "bg-slate-700 text-white hover:bg-slate-800" 
-                      : "text-slate-600 border-slate-300 hover:bg-slate-50"
-                  }`}
+                  className={`${styles.filterBtn} ${filter === filterType ? styles.filterActive : ""}`}
                 >
                   {filterType === "all" ? "All Tasks" : `${filterType} Tasks`}
                 </Button>
@@ -162,32 +147,29 @@ export default function TasksPage() {
 
             <Button
               onClick={() => setShowTaskForm(true)}
-              className="bg-slate-700 hover:bg-slate-800 text-white shadow-md hover:shadow-lg transition-shadow px-6 py-3 rounded-xl font-medium"
+              className={styles.createBtn}
             >
-              <Plus className="w-5 h-5 mr-2" />
+              <Plus className={styles.iconSmall + " " + styles.iconWithMargin} />
               Create Task
             </Button>
           </div>
         </motion.div>
 
-        {/* Tasks Grid */}
-        <div className="space-y-6">
+        <div className={styles.tasksList}>
           <AnimatePresence>
             {filteredTasks.length === 0 ? (
               <motion.div
-                
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                
-                className="text-center py-16"
+                className={styles.emptyState}
               >
-                <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-md border border-slate-200">
-                  <ListTodo className="w-12 h-12 text-slate-500" />
+                <div className={styles.emptyIcon}>
+                  <ListTodo className={styles.emptyIconInner} />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-800 mb-2">
+                <h3 className={styles.emptyTitle}>
                   {filter === "all" ? "No tasks yet" : `No ${filter} tasks`}
                 </h3>
-                <p className="text-slate-600 mb-6">
+                <p className={styles.emptyText}>
                   {filter === "all" 
                     ? "Create your first task to get started with better organization."
                     : `You don't have any ${filter} tasks at the moment.`
@@ -196,9 +178,9 @@ export default function TasksPage() {
                 {filter === "all" && (
                   <Button
                     onClick={() => setShowTaskForm(true)}
-                    className="bg-slate-700 hover:bg-slate-800 text-white font-medium"
+                    className={styles.createBtnAlt}
                   >
-                    <Plus className="w-5 h-5 mr-2" />
+                    <Plus className={styles.iconSmall + " " + styles.iconWithMargin} />
                     Create Your First Task
                   </Button>
                 )}
@@ -216,7 +198,6 @@ export default function TasksPage() {
           </AnimatePresence>
         </div>
 
-        {/* Task Form Modal */}
         <AnimatePresence>
           {showTaskForm && (
             <TaskForm

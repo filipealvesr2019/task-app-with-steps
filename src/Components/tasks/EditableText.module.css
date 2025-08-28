@@ -1,0 +1,28 @@
+/* src/components/tasks/EditableText.module.css */
+.input{
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.input:focus{
+  border-color: #64748b;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.06);
+}
+
+.viewWrapper{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  cursor:pointer;
+}
+.viewValue{
+  flex:1;
+  min-width:0;
+}
+.pencilIcon{
+  width:14px; height:14px; color:#64748b; opacity:0; transition:opacity .18s;
+}
+.viewWrapper:hover .pencilIcon{ opacity:1; color:#475569; }

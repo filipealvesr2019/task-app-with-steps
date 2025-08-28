@@ -1,0 +1,25 @@
+/* src/components/tasks/StepItem.module.css */
+.stepItem{
+  display:flex;
+  gap:12px;
+  padding:12px;
+  border-radius:10px;
+  transition: background .12s, border-color .12s;
+  border: 1px solid #e6e9ee;
+}
+.pending{ background: #f8fafc; }
+.pending:hover{ background:#f1f5f9; }
+.completed{ background: #ecfdf5; border-color: #bbf7d0; }
+
+.toggleBtn{
+  border:0; background:transparent; padding:4px; cursor:pointer;
+}
+.togglePending{ color:#64748b; }
+.toggleDone{ color:#16a34a; }
+
+.iconLarge{ width:24px; height:24px; }
+
+.stepContent{ flex:1; min-width:0; }
+.stepText{ font-size:1rem; color:#334155; font-weight:500; }
+.stepTextCompleted{ font-size:1rem; color:#166534; text-decoration: line-through; font-weight:500; }
+.stepInput{ width:100%; font-size:1rem; }
